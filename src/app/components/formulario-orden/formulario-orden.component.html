@@ -1,0 +1,79 @@
+<div class="contenedorOrdenCompra">
+  <h2>Formulario de Órdenes de Compra</h2>
+  <form class="form-horizontal" #ordenForm="ngForm" (ngSubmit)="crearOrden(ordenForm)">
+    <div class="form-group">
+      <label for="usuarios">Usuarios</label>
+      <select
+        id="usuarios"
+        name="usuarios"
+        [(ngModel)]="selectedUsuario"
+        #usuarioCtrl="ngModel"
+        required>
+        <option value="" disabled selected>Seleccione un cliente...</option>
+        <option *ngFor="let usuario of usuarios" [value]="usuario.idusuario">
+          {{ usuario.nombre }} {{ usuario.paterno }} {{ usuario.materno }}
+        </option>
+      </select>
+      <div class="error" *ngIf="usuarioCtrl.invalid && usuarioCtrl.touched">
+        Por favor, seleccione un usuario.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="productos">Productos</label>
+      <select
+        id="productos"
+        name="productos"
+        [(ngModel)]="selectedProducto"
+        #productoCtrl="ngModel"
+        required>
+        <option value="" disabled selected>Seleccione un producto...</option>
+        <option *ngFor="let producto of productos" [value]="producto.idproducto">
+          {{ producto.nombre }} ({{ producto.categoria || 'Sin categoría' }})
+        </option>
+      </select>
+      <div class="error" *ngIf="productoCtrl.invalid && productoCtrl.touched">
+        Por favor, seleccione un producto.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="cantidad">Cantidad</label>
+      <input
+        type="number"
+        id="cantidad"
+        name="cantidad"
+        min="1"
+        [(ngModel)]="cantidad"
+        #cantidadCtrl="ngModel"
+        required>
+      <div class="error" *ngIf="cantidadCtrl.invalid && cantidadCtrl.touched">
+        La cantidad debe ser mayor a 0.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="preciounitario">Precio Unitario</label>
+      <input
+        type="number"
+        id="preciounitario"
+        name="preciounitario"
+        min="1"
+        [(ngModel)]="preciounitario"
+        #precioCtrl="ngModel"
+        required>
+      <div class="error" *ngIf="precioCtrl.invalid && precioCtrl.touched">
+        El precio unitario debe ser mayor a 0.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <button
+        type="submit"
+        class="btnEnviar"
+        [disabled]="ordenForm.invalid">
+        Enviar
+      </button>
+    </div>
+  </form>
+</div>
