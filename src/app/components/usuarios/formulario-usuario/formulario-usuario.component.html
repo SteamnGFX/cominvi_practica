@@ -1,0 +1,108 @@
+<div class="contenedorFormularioUsuarios">
+  <h2>Formulario de Usuarios</h2>
+  <form class="form-horizontal" id="formularioUsuario" #usuarioForm="ngForm" (ngSubmit)="guardarUsuario(usuarioForm)">
+    <!-- Nombre -->
+    <div class="form-group">
+      <label for="nombre">Nombre</label>
+      <input
+        type="text"
+        id="nombre"
+        name="nombre"
+        [(ngModel)]="nombre"
+        #nombreCtrl="ngModel"
+        required
+        pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$"
+        minlength="2"
+      />
+      <div class="error" *ngIf="nombreCtrl.invalid && nombreCtrl.touched">
+        <span *ngIf="nombreCtrl.errors?.['required']">El nombre es obligatorio.</span>
+        <span *ngIf="nombreCtrl.errors?.['minlength']">Debe tener al menos 2 caracteres.</span>
+        <span *ngIf="nombreCtrl.errors?.['pattern']">Solo se permiten letras y espacios.</span>
+      </div>
+    </div>
+
+    <!-- Apellido Paterno -->
+    <div class="form-group">
+      <label for="paterno">Apellido Paterno</label>
+      <input
+        type="text"
+        id="paterno"
+        name="paterno"
+        [(ngModel)]="paterno"
+        #paternoCtrl="ngModel"
+        required
+        pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$"
+        minlength="2"
+      />
+      <div class="error" *ngIf="paternoCtrl.invalid && paternoCtrl.touched">
+        <span *ngIf="paternoCtrl.errors?.['required']">El apellido paterno es obligatorio.</span>
+        <span *ngIf="paternoCtrl.errors?.['minlength']">Debe tener al menos 2 caracteres.</span>
+        <span *ngIf="paternoCtrl.errors?.['pattern']">Solo se permiten letras y espacios.</span>
+      </div>
+    </div>
+
+    <!-- Apellido Materno -->
+    <div class="form-group">
+      <label for="materno">Apellido Materno</label>
+      <input
+        type="text"
+        id="materno"
+        name="materno"
+        [(ngModel)]="materno"
+        #maternoCtrl="ngModel"
+        required
+        pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$"
+      />
+      <div class="error" *ngIf="maternoCtrl.invalid && maternoCtrl.touched">
+        <span *ngIf="maternoCtrl.errors?.['required']">El apellido materno es obligatorio.</span>
+        <span *ngIf="maternoCtrl.errors?.['pattern']">Solo se permiten letras y espacios.</span>
+      </div>
+    </div>
+
+    <!-- Correo Electrónico -->
+    <div class="form-group">
+      <label for="correo">Correo Electrónico</label>
+      <input
+        type="email"
+        id="correo"
+        name="correo"
+        [(ngModel)]="correo"
+        #correoCtrl="ngModel"
+        required
+        pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+      />
+      <div class="error" *ngIf="correoCtrl.invalid && correoCtrl.touched">
+        <span *ngIf="correoCtrl.errors?.['required']">El correo es obligatorio.</span>
+        <span *ngIf="correoCtrl.errors?.['pattern']">Ingresa un correo válido (ejemplo&#64;dominio.com).</span>
+      </div>
+    </div>
+
+    <!-- Fecha de Registro -->
+    <div class="form-group">
+      <label for="fecharegistro">Fecha de Registro</label>
+      <input
+        type="date"
+        id="fecharegistro"
+        name="fecharegistro"
+        [(ngModel)]="fecharegistro"
+        #fechaCtrl="ngModel"
+        required
+        [max]="hoy"
+      />
+      <div class="error" *ngIf="fechaCtrl.invalid && fechaCtrl.touched">
+        <span *ngIf="fechaCtrl.errors?.['required']">La fecha de registro es obligatoria.</span>
+        <span *ngIf="fechaCtrl.errors?.['max']">La fecha no puede ser futura.</span>
+      </div>
+    </div>
+
+    <!-- Botón Enviar -->
+    <div class="form-group">
+      <button
+        type="submit"
+        class="btnEnviar"
+        [disabled]="usuarioForm.invalid">
+        Enviar
+      </button>
+    </div>
+  </form>
+</div>

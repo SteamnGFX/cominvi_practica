@@ -1,9 +1,10 @@
 import { Routes } from '@angular/router';
-import { FormularioUsuarioComponent } from './components/formulario-usuario/formulario-usuario.component';
-import { OrdenComponent } from './components/orden/orden.component';
+import { OrdenComponent } from './components/ordenes/orden/orden.component';
+import { UsuarioComponent } from './components/usuarios/usuario/usuario.component';
+import { TablaOrdenComponent } from './components/ordenes/tabla-orden/tabla-orden.component';
 
 export const routes: Routes = [
-    { path: 'ordenes', component: OrdenComponent },
-    { path: 'usuarios', component: FormularioUsuarioComponent },
+    { path: 'ordenes', component: TablaOrdenComponent },
+    { path: 'usuarios', component: UsuarioComponent },
     { path: '', redirectTo: 'ordenes', pathMatch: 'full' }, 
   ];

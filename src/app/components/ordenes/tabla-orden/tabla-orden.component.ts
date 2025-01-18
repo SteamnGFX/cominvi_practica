@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { OrdenService } from '../../services/orden.service';
-import { Orden } from '../../interfaces/Orden';
+import { OrdenService } from '../../../services/orden.service';
+import { Orden } from '../../../interfaces/Orden';
 
 @Component({
   selector: 'app-tabla-orden',
@@ -31,7 +31,7 @@ export class TablaOrdenComponent implements OnInit {
   }
 
   actualizarTabla(): void {
-    this.cargarOrdenes(); // Método para actualizar los datos manualmente
+    this.cargarOrdenes(); 
   }
 
   calcularGranTotal(): number {

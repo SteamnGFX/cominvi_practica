@@ -1,19 +1,18 @@
 import { Component, OnInit, Output,EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { UsuarioService } from '../../services/usuario.service';
-import { ProductoService } from '../../services/producto.service';
-import { OrdenService } from '../../services/orden.service';
-import { Usuario } from '../../interfaces/usuario';
-import { Producto } from '../../interfaces/producto';
-import { Orden } from '../../interfaces/Orden';
 import Swal from 'sweetalert2';
-import { TablaOrdenComponent } from "../tabla-orden/tabla-orden.component";
+import { Usuario } from '../../../interfaces/usuario';
+import { Producto } from '../../../interfaces/producto';
+import { Orden } from '../../../interfaces/Orden';
+import { UsuarioService } from '../../../services/usuario.service';
+import { ProductoService } from '../../../services/producto.service';
+import { OrdenService } from '../../../services/orden.service';
 
 @Component({
   selector: 'app-formulario-orden',
   standalone: true,
-  imports: [CommonModule, FormsModule, TablaOrdenComponent],
+  imports: [CommonModule, FormsModule],
   templateUrl: './formulario-orden.component.html',
   styleUrls: ['./formulario-orden.component.css'],
 })
