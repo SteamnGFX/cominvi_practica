@@ -1,0 +1,60 @@
+<div class="animate__animated animate__fadeIn contenedorTablaOrdenes">
+  <h2 style="text-align: center;">Tabla de Órdenes de Compra</h2>
+  <mat-form-field appearance="fill" style="width: 100%; margin-bottom: 16px;">
+    <mat-label>Buscar por algún campo...</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Buscar órdenes" />
+  </mat-form-field>
+
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+    <ng-container matColumnDef="idorden">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="bold">ID</th>
+      <td mat-cell *matCellDef="let orden">{{ orden.idorden }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="nombreUsuario">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="bold">Nombre Usuario</th>
+      <td mat-cell *matCellDef="let orden">{{ orden.usuario.nombre }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="nombreProducto">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="bold">Producto</th>
+      <td mat-cell *matCellDef="let orden">{{ orden.producto.nombre }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="categoria">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="bold">Categoría</th>
+      <td mat-cell *matCellDef="let orden">{{ orden.producto.categoria }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="cantidad">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="bold">Cantidad</th>
+      <td mat-cell *matCellDef="let orden">{{ orden.cantidad }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="preciounitario">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="bold">Precio Unitario</th>
+      <td mat-cell *matCellDef="let orden">{{ orden.preciounitario | currency }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="importeTotal">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="bold">Importe Total</th>
+      <td mat-cell *matCellDef="let orden">{{ orden.cantidad * orden.preciounitario | currency }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="fecha">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="bold">Fecha</th>
+      <td mat-cell *matCellDef="let orden">{{ orden.fecha | date: 'shortDate' }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
+  </mat-paginator>
+
+  <div class="totales">
+    <p>Gran Total: {{ calcularGranTotal() | currency }}</p>
+    <p>Total de Smartphones: {{ calcularTotalSmartphones() | currency }}</p>
+  </div>
+</div>

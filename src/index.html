@@ -2,12 +2,34 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>PracticaCminvi</title>
+  <title>COMINVI | Examen Práctico | Angel Roberto Martinez Castro</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/x-icon" href="/assets/static/img/favicon.jpg">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
-<body>
+<body class="mat-typography">
+  <div id="logo"><img src="/assets/static/img/Cominvi-logo.webp" alt="Logo Cominvi" class="logo-main"></div>
+  <div id="loader" class="loader"></div>
+
   <app-root></app-root>
+
+  <script>
+    window.addEventListener('load', () => {
+      const logo = document.getElementById('logo');
+      const loader = document.getElementById('loader');
+      const appRoot = document.querySelector('app-root');
+
+      loader.classList.add('loader-hidden');
+
+      setTimeout(() => {
+        loader.style.display = 'none';
+        logo.style.display = 'none';
+        appRoot.style.display = 'block';
+        appRoot.style.opacity = '1'; 
+      }, 500); 
+    });
+  </script>
 </body>
 </html>

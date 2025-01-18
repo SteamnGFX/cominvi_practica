@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { API_ENDPOINTS } from '../config/environment';
+import { API_ENDPOINTS } from '../../config/environment';
 import { Observable } from 'rxjs';
-import { Orden } from '../interfaces/Orden';
+import { Orden } from '../../interfaces/Orden';
 
 @Injectable({
   providedIn: 'root'

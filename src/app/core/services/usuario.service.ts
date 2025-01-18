@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { API_ENDPOINTS } from '../config/environment';
-import { Usuario } from '../interfaces/usuario';
+import { API_ENDPOINTS } from '../../config/environment';
+import { Usuario } from '../../interfaces/usuario';
 import { map, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 

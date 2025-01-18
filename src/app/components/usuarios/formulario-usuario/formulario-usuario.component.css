@@ -1,4 +1,4 @@
-.contenedorOrdenCompra {
+.contenedorFormularioUsuarios {
   margin: 20px auto;
   padding: 20px;
   max-width: 800px;
@@ -24,7 +24,6 @@ h2 {
 
 .form-group {
   flex: 1 1 calc(50% - 10px);
-  /* Dos columnas */
   display: flex;
   flex-direction: column;
 }
@@ -36,7 +35,6 @@ label {
   margin-bottom: 8px;
 }
 
-select,
 input {
   font-size: 14px;
   padding: 10px;
@@ -46,7 +44,6 @@ input {
   color: #333333;
 }
 
-select:focus,
 input:focus {
   border-color: #007bff;
   outline: none;
@@ -63,7 +60,6 @@ input:focus {
   cursor: pointer;
   transition: background-color 0.3s ease;
   align-self: flex-end;
-  /* Botón alineado a la derecha */
 }
 
 .btnEnviar:hover {
@@ -74,4 +70,20 @@ input:focus {
   color: #e74c3c;
   font-size: 0.85rem;
   margin-top: 0.25rem;
+}
+
+select,
+input {
+  font-size: 14px;
+  padding: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  color: #333333;
+}
+
+select:focus,
+input:focus {
+  border-color: #007bff;
+  outline: none;
 }

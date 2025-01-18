@@ -1,0 +1,5 @@
+<app-formulario-usuario [usuario]="usuarioSeleccionado" (usuarioCreado)="tablaUsuarios.actualizarTabla()">
+</app-formulario-usuario>
+
+<app-tabla-usuario #tablaUsuarios (usuarioSeleccionado)="usuarioSeleccionado = $event">
+</app-tabla-usuario>

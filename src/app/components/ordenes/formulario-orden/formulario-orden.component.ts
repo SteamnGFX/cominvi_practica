@@ -1,19 +1,18 @@
-import { Component, OnInit, Output,EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { UsuarioService } from '../../services/usuario.service';
-import { ProductoService } from '../../services/producto.service';
-import { OrdenService } from '../../services/orden.service';
-import { Usuario } from '../../interfaces/usuario';
-import { Producto } from '../../interfaces/producto';
-import { Orden } from '../../interfaces/Orden';
 import Swal from 'sweetalert2';
-import { TablaOrdenComponent } from "../tabla-orden/tabla-orden.component";
+import { Usuario } from '../../../interfaces/usuario';
+import { Producto } from '../../../interfaces/producto';
+import { Orden } from '../../../interfaces/Orden';
+import { UsuarioService } from '../../../core/services/usuario.service';
+import { ProductoService } from '../../../core/services/producto.service';
+import { OrdenService } from '../../../core/services/orden.service';
 
 @Component({
   selector: 'app-formulario-orden',
   standalone: true,
-  imports: [CommonModule, FormsModule, TablaOrdenComponent],
+  imports: [CommonModule, FormsModule],
   templateUrl: './formulario-orden.component.html',
   styleUrls: ['./formulario-orden.component.css'],
 })
@@ -25,14 +24,14 @@ export class FormularioOrdenComponent implements OnInit {
   selectedProducto: string = '';
   cantidad: number = 1;
   preciounitario: number = 0;
-  nuevaOrden!: Orden; // Para notificar al componente de tabla
+  nuevaOrden!: Orden;
   @Output() ordenCreada = new EventEmitter<any>();
 
   constructor(
     private usuarioService: UsuarioService,
     private productoService: ProductoService,
     private ordenService: OrdenService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.cargarUsuarios();
@@ -97,7 +96,7 @@ export class FormularioOrdenComponent implements OnInit {
   }
 
 
-  mostrarAlertaExitosa(): void{
+  mostrarAlertaExitosa(): void {
     const Toast = Swal.mixin({
       toast: true,
       position: "top-end",
@@ -115,7 +114,7 @@ export class FormularioOrdenComponent implements OnInit {
     });
   }
 
-  mostrarAlertaError(): void{
+  mostrarAlertaError(): void {
     const Toast = Swal.mixin({
       toast: true,
       position: "top-end",
