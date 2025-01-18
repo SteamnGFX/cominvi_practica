@@ -23,11 +23,12 @@ th {
     background-color: #f2f2f2;
 }
 
-.totales {
-    margin-top: 20px;
-}
 
 .totales p {
     font-weight: bold;
     margin: 5px 0;
+}
+
+.bold{
+    font-weight: bold !important;
 }

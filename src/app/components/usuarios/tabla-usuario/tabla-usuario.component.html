@@ -1,29 +1,62 @@
-<div class="contenedorTablaUsuarios">
-  <h2>Tabla de Usuarios</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>ID del Usuario</th>
-        <th>Nombre</th>
-        <th>Apellido Paterno</th>
-        <th>Apellido Materno</th>
-        <th>Correo Electrónico</th>
-        <th>Fecha de Registro</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let usuario of usuarios">
-        <td>{{ usuario.idusuario }}</td>
-        <td>{{ usuario.nombre }}</td>
-        <td>{{ usuario.paterno }}</td>
-        <td>{{ usuario.materno }}</td>
-        <td>{{ usuario.correo }}</td>
-        <td>{{ usuario.fecharegistro | date: 'shortDate' }}</td>
-        <td>
-          <button (click)="editarUsuario(usuario)">Editar</button>
-        </td>
-      </tr>
-    </tbody>
+<div class="animate__animated animate__fadeIn contenedorTablaUsuarios">
+  <h2 style="text-align: center;">Tabla de Usuarios</h2>
+  <div>
+    <mat-form-field appearance="fill" style="width: 100%;">
+      <mat-label>Bucar por algún campo...</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Buscar usuarios" />
+    </mat-form-field>
+  </div>
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+    <!-- ID del Usuario -->
+    <ng-container matColumnDef="idusuario">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="bold">ID</th>
+      <td mat-cell *matCellDef="let usuario">{{ usuario.idusuario }}</td>
+    </ng-container>
+
+    <!-- Nombre -->
+    <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="bold">Nombre</th>
+      <td mat-cell *matCellDef="let usuario">{{ usuario.nombre }}</td>
+    </ng-container>
+
+    <!-- Apellido Paterno -->
+    <ng-container matColumnDef="paterno">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="bold">Apellido Paterno</th>
+      <td mat-cell *matCellDef="let usuario">{{ usuario.paterno }}</td>
+    </ng-container>
+
+    <!-- Apellido Materno -->
+    <ng-container matColumnDef="materno">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="bold">Apellido Materno</th>
+      <td mat-cell *matCellDef="let usuario">{{ usuario.materno }}</td>
+    </ng-container>
+
+    <!-- Correo Electrónico -->
+    <ng-container matColumnDef="correo">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="bold">Correo</th>
+      <td mat-cell *matCellDef="let usuario">{{ usuario.correo }}</td>
+    </ng-container>
+
+    <!-- Fecha de Registro -->
+    <ng-container matColumnDef="fecharegistro">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="bold">Fecha de Registro</th>
+      <td mat-cell *matCellDef="let usuario">{{ usuario.fecharegistro | date: 'shortDate' }}</td>
+    </ng-container>
+
+    <!-- Acciones -->
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef>Acciones</th>
+      <td mat-cell *matCellDef="let usuario">
+        <button mat-icon-button color="primary" (click)="editarUsuario(usuario)">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <!-- Header Row -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <!-- Data Rows -->
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
+  <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 </div>

@@ -20,6 +20,7 @@ export class FormularioUsuarioComponent implements OnInit, OnChanges {
   materno: string = '';
   correo: string = '';
   fecharegistro: string = '';
+  estatus: number | null = null;
   hoy: string = new Date().toISOString().split('T')[0];
 
   constructor(private usuarioService: UsuarioService) {}
@@ -32,6 +33,7 @@ export class FormularioUsuarioComponent implements OnInit, OnChanges {
       this.paterno = this.usuario.paterno;
       this.materno = this.usuario.materno;
       this.correo = this.usuario.correo;
+      this.estatus = this.usuario.estatus;
       this.fecharegistro = new Date(this.usuario.fecharegistro).toISOString().split('T')[0];
     }
   }
@@ -49,7 +51,7 @@ export class FormularioUsuarioComponent implements OnInit, OnChanges {
         paterno: this.paterno,
         materno: this.materno,
         correo: this.correo,
-        estatus: 1,
+        estatus: this.estatus ?? 1,
         fecharegistro: new Date(this.fecharegistro)
       };
 
@@ -76,23 +78,39 @@ export class FormularioUsuarioComponent implements OnInit, OnChanges {
     }
   }
 
-  mostrarAlertaExitosa(): void {
-    Swal.fire({
-      icon: 'success',
-      title: 'Usuario registrado / editado correctamente!',
-      toast: true,
-      position: 'top-end',
-      timer: 3000
-    });
-  }
-
-  mostrarAlertaError(): void {
-    Swal.fire({
-      icon: 'error',
-      title: 'Ha ocurrido un error al registrar el usuario!',
-      toast: true,
-      position: 'top-end',
-      timer: 3000
-    });
-  }
+   mostrarAlertaExitosa(): void{
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        }
+      });
+      Toast.fire({
+        icon: "success",
+        title: "Usuario editado / agregado correctamente!"
+      });
+    }
+  
+    mostrarAlertaError(): void{
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        }
+      });
+      Toast.fire({
+        icon: "error",
+        title: "Ha ocurrido un error al registrar / actualizar el usuario!"
+      });
+    }
 }

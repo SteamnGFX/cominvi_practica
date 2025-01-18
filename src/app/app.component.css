@@ -56,3 +56,18 @@ main {
   color: #e67e22; /* Marca resaltada */
   text-transform: uppercase;
 }
+
+
+.logo-brand{
+  height: 32px;
+}
+
+.bold{
+  font-weight: bold;
+}
+
+nav ul li a.active {
+  color: #007bff; /* Color para la pestaña activa */
+  font-weight: bold; /* Opcional: destacar el texto */
+  text-decoration: underline;
+}

@@ -1,4 +1,4 @@
-<div class="contenedorFormularioUsuarios">
+<div class="animate__animated animate__fadeIn contenedorFormularioUsuarios">
   <h2>Formulario de Usuarios</h2>
   <form class="form-horizontal" id="formularioUsuario" #usuarioForm="ngForm" (ngSubmit)="guardarUsuario(usuarioForm)">
     <!-- Nombre -->
@@ -92,6 +92,24 @@
       <div class="error" *ngIf="fechaCtrl.invalid && fechaCtrl.touched">
         <span *ngIf="fechaCtrl.errors?.['required']">La fecha de registro es obligatoria.</span>
         <span *ngIf="fechaCtrl.errors?.['max']">La fecha no puede ser futura.</span>
+      </div>
+    </div>
+
+    <!-- Estatus -->
+    <div class="form-group">
+      <label for="estatus">Estatus</label>
+      <select
+        id="estatus"
+        name="estatus"
+        [(ngModel)]="estatus"
+        #estatusCtrl="ngModel"
+        required>
+        <option value="" disabled selected>Seleccione un estatus</option>
+        <option value="1">Activo</option>
+        <option value="0">Inactivo</option>
+      </select>
+      <div class="error" *ngIf="estatusCtrl.invalid && estatusCtrl.touched">
+        <span *ngIf="estatusCtrl.errors?.['required']">El estatus es obligatorio.</span>
       </div>
     </div>
 
