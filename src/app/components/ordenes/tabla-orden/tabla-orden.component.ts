@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Orden } from '../../../interfaces/Orden';
-import { OrdenService } from '../../../services/orden.service';
+import { OrdenService } from '../../../core/services/orden.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -27,7 +27,7 @@ export class TablaOrdenComponent implements OnInit {
     'categoria',
     'cantidad',
     'preciounitario',
-    'importeTotal', // Nueva columna
+    'importeTotal',
     'fecha',
   ];
   dataSource = new MatTableDataSource<Orden>([]);
@@ -35,7 +35,7 @@ export class TablaOrdenComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private ordenService: OrdenService) {}
+  constructor(private ordenService: OrdenService) { }
 
   ngOnInit(): void {
     this.cargarOrdenes();

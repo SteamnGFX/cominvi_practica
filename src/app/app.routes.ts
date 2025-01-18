@@ -5,5 +5,5 @@ import { UsuarioComponent } from './components/usuarios/usuario/usuario.componen
 export const routes: Routes = [
     { path: 'ordenes', component: OrdenComponent },
     { path: 'usuarios', component: UsuarioComponent },
-    { path: '', redirectTo: 'ordenes', pathMatch: 'full' }, 
+    { path: '**', redirectTo: 'ordenes', pathMatch: 'full' }, 
   ];

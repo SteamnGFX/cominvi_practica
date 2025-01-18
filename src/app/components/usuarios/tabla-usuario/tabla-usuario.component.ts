@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { Usuario } from '../../../interfaces/usuario';
-import { UsuarioService } from '../../../services/usuario.service';
+import { UsuarioService } from '../../../core/services/usuario.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -16,7 +16,7 @@ import { getSpanishPaginatorIntl } from '../../../custom-paginator-intl';
   templateUrl: './tabla-usuario.component.html',
   styleUrls: ['./tabla-usuario.component.css'],
   providers: [
-    { provide: MatPaginatorIntl, useValue: getSpanishPaginatorIntl() }, // Configura el proveedor aquí
+    { provide: MatPaginatorIntl, useValue: getSpanishPaginatorIntl() },
   ],
 })
 export class TablaUsuarioComponent implements OnInit {

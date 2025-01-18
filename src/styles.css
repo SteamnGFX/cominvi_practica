@@ -1,4 +1,3 @@
-/* You can add global styles to this file, and also import other style files */
 * {
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -11,4 +10,39 @@ body {
 body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.loader {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 50px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background:
+        radial-gradient(farthest-side, #ffa516 94%, #0000) top/8px 8px no-repeat,
+        conic-gradient(#0000 30%, #ffa516);
+    -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0);
+    animation: l13 1s infinite linear;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out; 
+}
+
+@keyframes l13 {
+    100% {
+        transform: rotate(1turn);
+    }
+}
+
+app-root {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in; 
+}
+
+
+.loader-hidden {
+    opacity: 0; 
+    transform: scale(0.8);
 }

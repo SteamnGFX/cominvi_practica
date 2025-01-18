@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title> CONMINVI | Examen Práctico | Angel Roberto Martinez Castro</title>
+  <title>COMINVI | Examen Práctico | Angel Roberto Martinez Castro</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="/assets/static/img/favicon.jpg">
@@ -10,6 +10,23 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body class="mat-typography">
+  <div id="loader" class="loader"></div>
+
   <app-root></app-root>
+
+  <script>
+    window.addEventListener('load', () => {
+      const loader = document.getElementById('loader');
+      const appRoot = document.querySelector('app-root');
+
+      loader.classList.add('loader-hidden');
+
+      setTimeout(() => {
+        loader.style.display = 'none';
+        appRoot.style.display = 'block';
+        appRoot.style.opacity = '1'; 
+      }, 500); 
+    });
+  </script>
 </body>
 </html>

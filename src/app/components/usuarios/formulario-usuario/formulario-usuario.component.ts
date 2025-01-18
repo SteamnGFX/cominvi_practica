@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import Swal from 'sweetalert2';
-import { UsuarioService } from '../../../services/usuario.service';
+import { UsuarioService } from '../../../core/services/usuario.service';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Usuario } from '../../../interfaces/usuario';
 import { CommonModule } from '@angular/common';
@@ -39,7 +39,6 @@ export class FormularioUsuarioComponent implements OnInit, OnChanges {
   }
 
   guardarUsuario(form: NgForm): void {
-    // Marcar todos los campos como "tocados" para mostrar los errores
     Object.keys(form.controls).forEach((controlName) => {
       form.controls[controlName].markAsTouched();
     });
@@ -58,7 +57,7 @@ export class FormularioUsuarioComponent implements OnInit, OnChanges {
       this.usuarioService.agregarUsuario(usuarioActualizado).subscribe(
         () => {
           this.mostrarAlertaExitosa();
-          this.usuarioCreado.emit(); // Emite evento para actualizar la tabla
+          this.usuarioCreado.emit(); 
           form.resetForm();
         },
         (error) => {

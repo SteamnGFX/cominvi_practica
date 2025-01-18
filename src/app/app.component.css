@@ -1,6 +1,6 @@
 /* styles.css */
 header {
-  background-color: #2c3e50; /* Azul oscuro moderno */
+  background-color: #2c3e50;
   color: white;
   padding: 1rem 2rem;
   display: flex;
@@ -14,7 +14,7 @@ header {
 
 nav ul {
   display: flex;
-  gap: 2rem; /* Separación uniforme entre enlaces */
+  gap: 2rem;
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -27,15 +27,15 @@ nav ul li a {
   font-size: 1rem;
   display: flex;
   align-items: center;
-  gap: 0.5rem; /* Espacio entre icono y texto */
+  gap: 0.5rem;
   transition: color 0.3s, transform 0.2s;
 }
 
 nav ul li a:hover,
 nav ul li a.active {
-  color: #e67e22; /* Elegante color naranja */
-  transform: translateY(-2px); /* Pequeño efecto al hover */
-  cursor:pointer;
+  color: #e67e22;
+  transform: translateY(-2px);
+  cursor: pointer;
 }
 
 nav ul li a i {
@@ -44,7 +44,7 @@ nav ul li a i {
 
 main {
   padding: 3rem;
-  background-color: #ecf0f1; /* Fondo claro profesional */
+  background-color: #ecf0f1;
   min-height: calc(100vh - 72px);
   font-family: 'Roboto', sans-serif;
   color: #2c3e50;
@@ -53,21 +53,15 @@ main {
 .brand {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #e67e22; /* Marca resaltada */
+  color: #e67e22;
   text-transform: uppercase;
 }
 
 
-.logo-brand{
+.logo-brand {
   height: 32px;
 }
 
-.bold{
+.bold {
   font-weight: bold;
-}
-
-nav ul li a.active {
-  color: #007bff; /* Color para la pestaña activa */
-  font-weight: bold; /* Opcional: destacar el texto */
-  text-decoration: underline;
 }

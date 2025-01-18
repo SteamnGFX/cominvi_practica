@@ -1,10 +1,19 @@
-<!-- app.component.html -->
 <header>
-  <div class="brand"><img src="/assets/static/img/Cominvi-logo.webp" alt="logo_cominvi" class="logo-brand"></div>
+  <div class="brand">
+    <img src="/assets/static/img/Cominvi-logo.webp" alt="logo_cominvi" class="logo-brand">
+  </div>
   <nav>
     <ul>
-      <li><a routerLink="/ordenes" routerLinkActive="active" href="/ordenes"><i class="fas fa-box"></i> Órdenes</a></li>
-      <li><a routerLink="/usuarios" routerLinkActive="active"  href="/usuarios"><i class="fas fa-users"></i> Usuarios</a></li>
+      <li>
+        <a routerLink="/ordenes" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          <i class="fas fa-box"></i> Órdenes
+        </a>
+      </li>
+      <li>
+        <a routerLink="/usuarios" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          <i class="fas fa-users"></i> Usuarios
+        </a>
+      </li>
     </ul>
   </nav>
 </header>
