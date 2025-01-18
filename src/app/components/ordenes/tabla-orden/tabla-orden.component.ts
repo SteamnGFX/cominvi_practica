@@ -35,7 +35,19 @@ export class TablaOrdenComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private ordenService: OrdenService) { }
+  constructor(private ordenService: OrdenService) {
+    this.dataSource.filterPredicate = (data: Orden, filter: string) => {
+      const normalizedFilter = filter.trim().toLowerCase();
+      return (
+        data.idorden.toString().includes(normalizedFilter) ||
+        data.usuario.nombre.toLowerCase().includes(normalizedFilter) || 
+        data.producto.nombre.toLowerCase().includes(normalizedFilter) || 
+        data.producto.categoria.toLowerCase().includes(normalizedFilter) || 
+        data.cantidad.toString().includes(normalizedFilter) ||
+        data.preciounitario.toString().includes(normalizedFilter) 
+      );
+    };
+  }
 
   ngOnInit(): void {
     this.cargarOrdenes();
