@@ -24,7 +24,6 @@ h2 {
 
 .form-group {
   flex: 1 1 calc(50% - 10px);
-  /* Dos columnas */
   display: flex;
   flex-direction: column;
 }
@@ -63,7 +62,6 @@ input:focus {
   cursor: pointer;
   transition: background-color 0.3s ease;
   align-self: flex-end;
-  /* Botón alineado a la derecha */
 }
 
 .btnEnviar:hover {

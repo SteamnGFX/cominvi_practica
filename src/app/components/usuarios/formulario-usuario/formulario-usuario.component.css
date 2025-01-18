@@ -24,7 +24,6 @@ h2 {
 
 .form-group {
   flex: 1 1 calc(50% - 10px);
-  /* Dos columnas */
   display: flex;
   flex-direction: column;
 }

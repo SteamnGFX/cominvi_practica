@@ -62,7 +62,6 @@ export class FormularioUsuarioComponent implements OnInit, OnChanges {
         },
         (error) => {
           this.mostrarAlertaError();
-          console.error('Error al guardar usuario:', error);
         }
       );
     } else {

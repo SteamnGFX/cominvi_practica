@@ -10,12 +10,14 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body class="mat-typography">
+  <div id="logo"><img src="/assets/static/img/Cominvi-logo.webp" alt="Logo Cominvi" class="logo-main"></div>
   <div id="loader" class="loader"></div>
 
   <app-root></app-root>
 
   <script>
     window.addEventListener('load', () => {
+      const logo = document.getElementById('logo');
       const loader = document.getElementById('loader');
       const appRoot = document.querySelector('app-root');
 
@@ -23,6 +25,7 @@
 
       setTimeout(() => {
         loader.style.display = 'none';
+        logo.style.display = 'none';
         appRoot.style.display = 'block';
         appRoot.style.opacity = '1'; 
       }, 500); 
